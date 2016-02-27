@@ -1,0 +1,24 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from datetime import timedelta
+
+DEBUG = True
+
+# session config
+PERMANENT_SESSION_LIFETIME = timedelta(minutes=120)
+SECRET_KEY = 'vA0Zr98je3yX4RvXHHnjmN]LWX29kRTS'
+
+# sqlalchemy config
+SQLALCHEMY_DATABASE_URI = 'mysql://root:liang702352512@127.0.0.1/flask_base'
+SQLALCHEMY_POOL_RECYCLE = 3600
+SESSION_OPTIONS = {
+    'autocommit' : False
+}
+
+# redis配置
+REDIS = {
+    "host": "localhost",
+    "port": 6379,
+    "db": 0,
+}
