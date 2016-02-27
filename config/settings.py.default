@@ -10,7 +10,7 @@ PERMANENT_SESSION_LIFETIME = timedelta(minutes=120)
 SECRET_KEY = 'vA0Zr98je3yX4RvXHHnjmN]LWX29kRTS'
 
 # sqlalchemy config
-SQLALCHEMY_DATABASE_URI = 'mysql://root:liang702352512@127.0.0.1/flask_base'
+SQLALCHEMY_DATABASE_URI = 'mysql://dbuser:dbpassword@127.0.0.1/flask_base'
 SQLALCHEMY_POOL_RECYCLE = 3600
 SESSION_OPTIONS = {
     'autocommit' : False
