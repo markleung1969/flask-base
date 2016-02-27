@@ -7,7 +7,7 @@ from apps.auth.models import User
 from utils.error.error import AdError, catch_err
 from utils.base.base import random_str
 from utils.base.auth import auth_required, get_password
-from apps.auth.form import LoginForm, RegisterForm, FindPasswordForm
+from apps.auth.form import LoginForm, RegisterForm
 from init import app, db
 from init import auth_bp as bp
 
@@ -131,7 +131,7 @@ def auth_get_info():
 # get
 # /test
 @app.route('/test', methods=['GET'])
-@catch_err1
+@catch_err
 def test_api():
     resp = {
         'c' : 0,
