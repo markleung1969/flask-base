@@ -3,6 +3,16 @@
 
 from wtforms import Form, TextField, PasswordField, validators
 
+class EditItemForm(Form):
+    name = TextField('名称', [
+        validators.Required(),
+        validators.Length(max=64)
+    ])
+    description = TextField('描述', [
+        validators.Required(),
+        validators.Length(max=128)
+    ])
+
 class RegisterForm(Form):
     """
     用户注册表单验证

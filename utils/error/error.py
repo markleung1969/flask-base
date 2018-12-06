@@ -1,14 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import logging
-import config.setting
+import config.settings
 from utils.error.error_code import ERR
 from flask import request, jsonify, make_response, json
 from functools import wraps
 
-class AdError(Exception):
-
+class MkError(Exception):
     def __init__(self, err_code, payload={}):
         Exception.__init__(self)
         self.code = err_code
@@ -22,17 +19,21 @@ def catch_err(old_handler):
     """
     @wraps(old_handler)
     def new_handler(*args, **kwargs):
-        logger = logging.getLogger('adgear-dashboard')
         try:
             return old_handler(*args, **kwargs)
-        except AdError as e:
+        except MkError as e:
             re = {
                 'c' : e.code,
                 'm' : e.msg,
                 'd' : e.payload,
             }
             return jsonify(re)
-        except Exception as e:
-            re = make_response(jsonify({'c': -5000, 'm':'内部错误'}), 500)
-            return re
+        except Exception as err:
+            e = MkError(-5000) 
+            re = {
+                'c' : e.code,
+                'm' : e.msg,
+                'd' : e.payload,
+            }
+            return jsonify(re)
     return new_handler
